@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Inventory | Book Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">L</div>
+      <div>
+        <h1>LibraDesk</h1>
+        <p>Library Management System</p>
+      </div>
+    </div>
+    <span class="status"><span></span> System Online</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">LIBRARY ADMINISTRATION</p>
+        <h2>Book Inventory</h2>
+        <p>Manage your library collection in one place.</p>
+      </div>
+      <button id="addBookBtn" class="primary-btn">+ Add New Book</button>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <span>Total Titles</span>
+        <strong id="totalTitles">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Total Copies</span>
+        <strong id="totalCopies">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Categories</span>
+        <strong id="totalCategories">0</strong>
+      </article>
+    </section>
+
+    <section class="panel" id="formPanel" hidden>
+      <div class="panel-heading">
+        <div>
+          <h3 id="formTitle">Add a New Book</h3>
+          <p>Enter the book details below.</p>
+        </div>
+        <button id="cancelBtn" class="secondary-btn" type="button">Cancel</button>
+      </div>
+
+      <form id="bookForm">
+        <input type="hidden" id="bookId">
+
+        <div class="form-grid">
+          <label>Book Title *
+            <input id="title" required minlength="2" maxlength="100" placeholder="e.g. Clean Code">
+          </label>
+          <label>Author *
+            <input id="author" required maxlength="80" placeholder="Author name">
+          </label>
+          <label>ISBN *
+            <input id="isbn" required placeholder="Unique ISBN">
+          </label>
+          <label>Category *
+            <select id="category" required>
+              <option value="">Select category</option>
+              <option>Programming</option>
+              <option>Science</option>
+              <option>Fiction</option>
+              <option>Mathematics</option>
+              <option>History</option>
+              <option>Business</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Quantity *
+            <input id="quantity" type="number" min="0" step="1" required placeholder="Number of copies">
+          </label>
+          <label>Publication Year
+            <input id="publicationYear" type="number" min="1000" max="2026" placeholder="e.g. 2024">
+          </label>
+        </div>
+
+        <p id="formMessage" role="status"></p>
+        <button class="primary-btn" type="submit">Save Book</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h3>Book Collection</h3>
+          <p>View and manage registered books.</p>
+        </div>
+        <input id="searchInput" class="search" type="search"
+          placeholder="Search title, author or ISBN">
+      </div>
+
+      <p id="listMessage" role="status"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Book Details</th>
+              <th>ISBN</th>
+              <th>Category</th>
+              <th>Year</th>
+              <th>Copies</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="booksTable">
+            <tr><td colspan="6" class="empty">Loading books...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>LibraDesk · Library Book Inventory Management System</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
